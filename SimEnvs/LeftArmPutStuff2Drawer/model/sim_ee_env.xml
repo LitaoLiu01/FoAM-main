@@ -1,0 +1,381 @@
+<mujoco model="mobile">
+  <compiler angle="radian" meshdir="../assets/"/>
+  <statistic meansize="0.132335" extent="1.974" center="-0.11444 0.00208192 0.138066"/>
+  <include file="scene.xml"/>
+  <asset>
+    <!-- robot_mesh -->
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="right_base_link" file="right_base_link.STL"/>
+    <mesh name="right_link1" file="right_link1.STL"/>
+    <mesh name="right_link2" file="right_link2.STL"/>
+    <mesh name="right_link3" file="right_link3.STL"/>
+    <mesh name="right_link4" file="right_link4.STL"/>
+    <mesh name="right_link5" file="right_link5.STL"/>
+    <mesh name="right_link6" file="right_link6.STL"/>
+    <mesh name="left_base_link" file="left_base_link.STL"/>
+    <mesh name="left_link1" file="left_link1.STL"/>
+    <mesh name="left_link2" file="left_link2.STL"/>
+    <mesh name="left_link3" file="left_link3.STL"/>
+    <mesh name="left_link4" file="left_link4.STL"/>
+    <mesh name="left_link5" file="left_link5.STL"/>
+    <mesh name="left_link6" file="left_link6.STL"/>
+    <!--robotiq-->
+    <material name="metal" rgba="0.58 0.58 0.58 1"/>
+    <material name="silicone" rgba="0.1882 0.1882 0.1882 1"/>
+    <material name="gray" rgba="0.4627 0.4627 0.4627 1"/>
+    <material name="black" rgba="0.149 0.149 0.149 1"/>
+
+    <mesh class="2f85" file="base_mount.stl"/>
+    <mesh class="2f85" file="base.stl"/>
+    <mesh class="2f85" file="driver.stl"/>
+    <mesh class="2f85" file="coupler.stl"/>
+    <mesh class="2f85" file="follower.stl"/>
+    <mesh class="2f85" file="pad.stl"/>
+    <mesh class="2f85" file="silicone_pad.stl"/>
+    <mesh class="2f85" file="spring_link.stl"/>
+
+  </asset>
+
+  <default>
+    <default class="2f85">
+      <mesh scale="0.001 0.001 0.001"/>
+      <general biastype="affine"/>
+
+      <joint axis="1 0 0"/>
+      <default class="driver">
+        <joint range="0 0.8" armature="0.005" damping="0.1" solimplimit="0.95 0.99 0.001" solreflimit="0.005 1"/>
+      </default>
+      <default class="follower">
+        <joint range="-0.872664 0.872664" pos="0 -0.018 0.0065" solimplimit="0.95 0.99 0.001" solreflimit="0.005 1"/>
+      </default>
+      <default class="spring_link">
+        <joint range="-0.29670597283 0.8" stiffness="0.05" springref="2.62" damping="0.00125"/>
+      </default>
+      <default class="coupler">
+        <joint range="-1.57 0" solimplimit="0.95 0.99 0.001" solreflimit="0.005 1"/>
+      </default>
+
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom type="mesh" group="3"/>
+        <default class="pad_box1">
+          <geom mass="0" type="box" pos="0 -0.0026 0.028125" size="0.011 0.004 0.009375" friction="1.5 0.5 0.3"
+            solimp="0.95 0.99 0.001" solref="0.004 1" priority="1" rgba="0.55 0.55 0.55 1"/>
+        </default>
+        <default class="pad_box2">
+          <geom mass="0" type="box" pos="0 -0.0026 0.009375" size="0.011 0.004 0.009375" friction="1.5 0.5 0.3"
+            solimp="0.95 0.99 0.001" solref="0.004 1" priority="1" rgba="0.45 0.45 0.45 1"/>
+        </default>
+      </default>
+    </default>
+  </default>
+
+  <worldbody>
+    <!-- robot -->
+    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="base_link"/>
+    <geom type="mesh" rgba="1 1 1 1" mesh="base_link"/>
+    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="right_base_link"/>
+    <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_base_link"/>
+    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="left_base_link"/>
+    <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_base_link"/>
+    <body name="right_link1" pos="0.077 0.0005 0.43" quat="0.707107 0 0 0.707107">
+      <inertial pos="-0.180507 -9.14459e-08 0.00955031" quat="0.43008 0.561259 0.561304 0.430067" mass="0.23233" diaginertia="0.000394134 0.000338875 0.000302877"/>
+      <joint name="right_link1" pos="0 0 0" axis="1 0 0" range="-3.14 3.14" frictionloss="60"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="right_link1"/>
+      <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_link1"/>
+      <body name="right_link2" pos="-0.18185 0 0" quat="0.707105 0 0.707108 0">
+        <inertial pos="-0.120187 1.57771e-06 -0.103646" quat="0.707172 0.00778026 0.00774997 0.706956" mass="0.502889" diaginertia="0.000546589 0.000532059 0.000573687"/>
+        <joint name="right_link2" pos="0 0 0" axis="1 0 0" range="-3.14 3.14" frictionloss="60"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="right_link2"/>
+        <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_link2"/>
+        <body name="right_link3" pos="-0.11985 0 -0.24355">
+          <inertial pos="0.0881412 3.46098e-07 -0.113366" quat="0.706566 -0.0276121 -0.0276147 0.706569" mass="0.239976" diaginertia="0.000183028 0.000179849 0.000152432"/>
+          <joint name="right_link3" pos="0 0 0" axis="1 0 0" range="-3.14 3.14" frictionloss="60"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="right_link3"/>
+          <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_link3"/>
+          <body name="right_link4" pos="0.09285 0 -0.2132">
+            <inertial pos="-0.0915543 -1.51027e-07 -3.97056e-05" quat="0.52054 0.478557 0.478585 0.520556" mass="0.10126" diaginertia="0.000111173 0.0000854587 0.0000777565"/>
+            <joint name="right_link4" pos="0 0 0" axis="1 0 0" range="-3.14 3.14" frictionloss="60"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="right_link4"/>
+            <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_link4"/>
+            <body name="right_link5" pos="-0.10405 0 0">
+              <inertial pos="-3.09303e-05 -4.5889e-08 -0.0800602" quat="0.508885 0.490953 0.49087 0.508968" mass="0.0855533" diaginertia="0.0000783986 0.0000700782 0.0000525718"/>
+              <joint name="right_link5" pos="0 0 0" axis="0 0 1" range="-3.14 3.14" frictionloss="60"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="right_link5"/>
+              <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_link5"/>
+              <body name="right_link6" pos="0 0 -0.08535">
+                <inertial pos="-0.0667479 2.16944e-08 0.000153725" quat="0.707249 0.706962 -0.00139353 0.00138544" mass="0.0394097" diaginertia="0.0000196561 0.0000171689 0.0000170178"/>
+                <joint name="right_link6" pos="0 0 0" axis="1 0 0" range="-3.14 3.14" frictionloss="60"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="right_link6"/>
+                <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_link6"/>
+                  <include file="right_2f85.xml" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="left_link1" pos="0.077 0.0005 0.43" quat="0.707107 0 0 0.707107">
+      <inertial pos="0.180507 9.08564e-08 0.00955031" quat="0.561259 0.43008 0.430067 0.561304" mass="0.23233" diaginertia="0.000394134 0.000338875 0.000302877"/>
+      <joint name="left_link1" pos="0 0 0" axis="-1 0 0" range="-3.14 3.14" frictionloss="60"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="left_link1"/>
+      <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_link1"/>
+      <body name="left_link2" pos="0.18185 0 0" quat="0.707107 0 0.707107 0">
+        <inertial pos="-0.120187 -1.58623e-06 0.103646" quat="0.706956 -0.00774998 -0.00778026 0.707172" mass="0.502889" diaginertia="0.000546589 0.000532059 0.000573687"/>
+        <joint name="left_link2" pos="0 0 0" axis="1 0 0" range="-3.14 3.14" frictionloss="60"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="left_link2"/>
+        <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_link2"/>
+        <body name="left_link3" pos="-0.11985 0 0.24355">
+          <inertial pos="0.0881412 -3.41398e-07 0.113366" quat="0.706569 0.0276147 0.0276122 0.706566" mass="0.239976" diaginertia="0.000183028 0.000179849 0.000152432"/>
+          <joint name="left_link3" pos="0 0 0" axis="-1 0 0" range="-3.14 3.14" frictionloss="60"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="left_link3"/>
+          <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_link3"/>
+          <body name="left_link4" pos="0.09285 0 0.2132">
+            <inertial pos="-0.0915544 1.50835e-07 3.9706e-05" quat="0.478585 0.520556 0.52054 0.478557" mass="0.10126" diaginertia="0.000111173 0.0000854587 0.0000777565"/>
+            <joint name="left_link4" pos="0 0 0" axis="1 0 0" range="-3.14 3.14" frictionloss="60"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="left_link4"/>
+            <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_link4"/>
+            <body name="left_link5" pos="-0.10405 0 0">
+              <inertial pos="-3.09337e-05 6.7496e-08 0.0800602" quat="0.490869 0.508969 0.508885 0.490953" mass="0.0855533" diaginertia="0.0000783986 0.0000700782 0.0000525718"/>
+              <joint name="left_link5" pos="0 0 0" axis="0 0 -1" range="-3.14 3.14" frictionloss="60"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="left_link5"/>
+              <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_link5"/>
+              <body name="left_link6" pos="0 0 0.08535">
+                <inertial pos="-0.0667479 -2.16944e-08 -0.000153725" quat="0.707249 0.706962 0.00139353 -0.00138544" mass="0.0394097" diaginertia="0.0000196561 0.0000171689 0.0000170178"/>
+                <joint name="left_link6" pos="0 0 0" axis="-1 0 0" range="-3.14 3.14" frictionloss="60"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.898039 0.917647 0.929412 1" mesh="left_link6"/>
+                <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_link6"/>
+                  <include file="left_2f85.xml" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+
+    <body mocap="true" name="mocap_left" pos="0.077 0.72455 0.63105" >
+      <site pos="0 0 0" size="0.003 0.003 0.03" type="box" name="mocap_left_site1" rgba="1 0 0 1"/>
+      <site pos="0 0 0" size="0.003 0.03 0.003" type="box" name="mocap_left_site2" rgba="1 0 0 1"/>
+      <site pos="0 0 0" size="0.03 0.003 0.003" type="box" name="mocap_left_site3" rgba="1 0 0 1"/>
+    </body>
+    <body mocap="true" name="mocap_right" pos="0.077 -0.72334915 .63105">
+      <site pos="0 0 0" size="0.003 0.003 0.03" type="box" name="mocap_right_site1" rgba="1 0 0 1"/>
+      <site pos="0 0 0" size="0.003 0.03 0.003" type="box" name="mocap_right_site2" rgba="1 0 0 1"/>
+      <site pos="0 0 0" size="0.03 0.003 0.003" type="box" name="mocap_right_site3" rgba="1 0 0 1"/>
+    </body>
+
+    <body childclass="wall" name="cabinet_body" pos="0.73 -0.25 0.32" quat="1 0 0 0">
+        <joint name="cabinet_joint" type="free" />
+        <geom material="cabinet_material" name="frame_vertical_bar-38" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-3.obj.convex"/>
+        <geom material="cabinet_material" name="frame_vertical_bar-39" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-7.obj.convex"/>
+        <geom material="cabinet_material" name="frame_horizontal_bar-40" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-4.obj.convex"/>
+        <geom material="cabinet_material" name="frame_horizontal_bar-41" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-8.obj.convex"/>
+        <geom material="cabinet_material" name="frame_horizontal_bar-42" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-24.obj.convex"/>
+        <geom material="cabinet_material" name="frame_horizontal_bar-43" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-17.obj.convex"/>
+        <geom material="cabinet_material" name="frame_horizontal_bar-44" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-6.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-52" pos="0 0 0" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-22.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-51" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-21.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-50" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-23.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-49" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-20.obj.convex"/>
+        <geom material="cabinet_material" name="vertical_side_panel-53" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-15.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-14.obj.convex"/>
+        <geom material="cabinet_material" name="vertical_side_panel-54" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-10.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-11.obj.convex"/>
+        <geom material="cabinet_material" name="back_panel-55" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-5.obj.convex"/>
+        <geom material="cabinet_material" name="bottom_panel-56" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-2.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-64" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-64.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-63" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-60.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-62" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-47.obj.convex"/>
+        <geom material="cabinet_material" name="other_leaf-61" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-34.obj.convex"/>
+        <geom material="cabinet_material" name="base_side_panel-29" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-12.obj.convex"/>
+        <geom material="cabinet_material" name="base_side_panel-30" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-18.obj.convex"/>
+        <geom material="cabinet_material" name="base_side_panel-31" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-16.obj.convex"/>
+        <geom material="cabinet_material" name="base_side_panel-32" quat="0.5 0.5 -0.5 -0.5" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-19.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-3.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-7.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-4.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-8.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-24.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-17.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-6.obj.convex"/>
+        <geom material="cabinet_material" pos="0 0 0" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-22.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-21.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-23.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-20.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-15.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-14.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-10.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-11.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-5.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-2.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-64.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-60.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-47.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-34.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-12.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-18.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-16.obj.convex"/>
+        <geom material="cabinet_material" quat="0.5 0.5 -0.5 -0.5" type="mesh" mesh="original-19.obj.convex"/>
+        <body name="link_0" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="joint_0" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.3" frictionloss="0.1"/>
+          <geom material="cabinet_material" name="drawer_front-23" type="mesh" group="1" density="0" mesh="original-62.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" group="1" density="0" mesh="original-54.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_side-24" type="mesh"  group="1" density="0" mesh="original-58.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_side-25" type="mesh"  group="1" density="0" mesh="original-53.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_back-26" type="mesh"  group="1" density="0" mesh="original-59.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_bottom-27" type="mesh"  group="1" density="0" mesh="original-57.obj.convex"/>
+          <geom material="cabinet_material" name="bottom_drawer_bottom" type="mesh"  group="1" density="0" mesh="original-56.obj.convex"/>
+          <geom material="cabinet_material" name="handle-22" type="mesh" group="1" density="0" mesh="original-63.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-62.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-54.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-58.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-53.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-59.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-57.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-56.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-63.obj.convex" name="bottom_handle"/>
+        </body>
+        <body name="link_1" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="joint_1" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.3" frictionloss="0.1"/>
+          <geom material="cabinet_material" name="drawer_front-16" type="mesh" group="1" density="0" mesh="original-49.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" group="1" density="0" mesh="original-41.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_side-17" type="mesh" group="1" density="0" mesh="original-45.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_side-18" type="mesh" group="1" density="0" mesh="original-40.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_back-19" type="mesh" group="1" density="0" mesh="original-46.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_bottom-20" type="mesh" group="1" density="0" mesh="original-43.obj.convex" />
+          <geom material="cabinet_material" type="mesh" group="1" density="0" mesh="original-44.obj.convex"/>
+          <geom material="cabinet_material" name="handle-15" type="mesh"  group="1" density="0" mesh="original-50.obj.convex" />
+          <geom material="cabinet_material" type="mesh" mesh="original-49.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-41.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-45.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-40.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-46.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-43.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-44.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-50.obj.convex" name="middle_handle"/>
+        </body>
+        <body name="link_2" quat="0.5 0.5 -0.5 -0.5">
+          <joint name="joint_2" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.3" frictionloss="0.1"/>
+          <geom material="cabinet_material" name="drawer_front-9" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-28.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-36.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_side-10" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-32.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_side-11" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-27.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_back-12" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-33.obj.convex"/>
+          <geom material="cabinet_material" name="drawer_bottom-13" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-31.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-30.obj.convex"/>
+          <geom material="cabinet_material" name="handle-8" type="mesh" contype="0" conaffinity="0" group="1" density="0" mesh="original-37.obj.convex" />
+          <geom material="cabinet_material" type="mesh" mesh="original-28.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-36.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-32.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-27.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-33.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-31.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-30.obj.convex"/>
+          <geom material="cabinet_material" type="mesh" mesh="original-37.obj.convex"  name="top_handle"/>
+        </body>
+    </body>
+
+<!--    苹果-->
+    <body name="apple" pos="0.375 0.2 0.1" quat="0 0 0 1">
+      <joint name="apple_joint" type="free" frictionloss="0.01" />
+      <inertial pos="0 0 0" mass="0.02" diaginertia="0.002 0.002 0.002" />
+      <geom name="apple_visual" type="mesh" mesh="apple" rgba="0.8 0.0 0.0 1.0"/>
+      <geom name="apple_contact0" type="mesh" mesh="apple_contact0" rgba="0.0 1.0 0.0 1.0"/>
+      <geom name="apple_contact1" type="mesh" mesh="apple_contact1" rgba="0.8 0.0 0.0 1.0"/>
+    </body>
+
+<!--    香蕉-->
+    <body name="banana" pos="0.475 0.2 0.08" quat="0 0 0 1">
+      <joint name="banana_joint" type="free" frictionloss="0.01" />
+      <inertial pos="0 0 0" mass="0.02" diaginertia="0.002 0.002 0.002" />
+      <geom name="banana_visual" type="mesh" mesh="banana" rgba="1 1 0 1.0" />
+      <geom name="banana_contact0" type="mesh" mesh="banana_contact0" rgba="1 1 0 1.0"/>
+      <geom name="banana_contact1" type="mesh" mesh="banana_contact1" rgba="1 1 0 1.0"/>
+      <geom name="banana_contact2" type="mesh" mesh="banana_contact2" rgba="1 1 0 1.0"/>
+      <geom name="banana_contact3" type="mesh" mesh="banana_contact3" rgba="1 1 0 1.0"/>
+      <geom name="banana_contact4" type="mesh" mesh="banana_contact4" rgba="1 1 0 1.0"/>
+    </body>
+
+    <body name="green_bottle" pos="0.475 0.3 0.09" quat="0.5 0.5 0.5 0.5">
+      <joint name="green_bottle_joint" type="free" frictionloss="0.01" />
+      <inertial pos="0 0 0" mass="0.02" diaginertia="0.002 0.002 0.002" />
+      <geom name="green_bottle_visual" type="mesh" mesh="waterbottle" rgba="0 0.39 0 1" />
+      <geom name="green_bottle_contact0" type="mesh" mesh="waterbottle_contact0" rgba="0 0.39 0 1"/>
+      <geom name="green_bottle_contact1" type="mesh" mesh="waterbottle_contact1" rgba="0 0.39 0 1" />
+    </body>
+
+<!--    水瓶-->
+    <body name="blue_bottle" pos="0.375 0.3 0.09" quat="0.5 -0.5 0.5 0.5">
+      <joint name="blue_bottle_joint" type="free" frictionloss="0.01" />
+      <inertial pos="0 0 0" mass="0.02" diaginertia="0.002 0.002 0.002" />
+      <geom name="blue_bottle_visual" type="mesh" mesh="waterbottle" rgba="0.31 0.29 0.75 1" />
+      <geom name="blue_bottle_contact0" type="mesh" mesh="waterbottle_contact0" rgba="0.31 0.29 0.75 1"/>
+      <geom name="blue_bottle_contact1" type="mesh" mesh="waterbottle_contact1" rgba="0.31 0.29 0.75 1" />
+    </body>
+
+
+
+  </worldbody>
+  <contact>
+    <!--left-hand-->
+    <exclude body1="left-hand_base" body2="left-hand_left_driver"/>
+    <exclude body1="left-hand_base" body2="left-hand_right_driver"/>
+    <exclude body1="left-hand_base" body2="left-hand_left_spring_link"/>
+    <exclude body1="left-hand_base" body2="left-hand_right_spring_link"/>
+    <exclude body1="left-hand_right_coupler" body2="left-hand_right_follower"/>
+    <exclude body1="left-hand_left_coupler" body2="left-hand_left_follower"/>
+    <!--right-hand-->
+    <exclude body1="right-hand_base" body2="right-hand_left_driver"/>
+    <exclude body1="right-hand_base" body2="right-hand_right_driver"/>
+    <exclude body1="right-hand_base" body2="right-hand_left_spring_link"/>
+    <exclude body1="right-hand_base" body2="right-hand_right_spring_link"/>
+    <exclude body1="right-hand_right_coupler" body2="right-hand_right_follower"/>
+    <exclude body1="right-hand_left_coupler" body2="right-hand_left_follower"/>
+
+  </contact>
+
+
+  <!--
+    This adds stability to the model by having a tendon that distributes the forces between both
+    joints, such that the equality constraint doesn't have to do that much work in order to equalize
+    both joints. Since both joints share the same sign, we split the force between both equally by
+    setting coef=0.5
+  -->
+  <tendon>
+    <fixed name="right-hand_split">  
+      <joint joint="right-hand_right_driver_joint" coef="0.5"/>
+      <joint joint="right-hand_left_driver_joint" coef="0.5"/>
+    </fixed>
+    <fixed name="left-hand_split">
+      <joint joint="left-hand_right_driver_joint" coef="0.5"/>
+      <joint joint="left-hand_left_driver_joint" coef="0.5"/>
+    </fixed>
+  </tendon>
+
+  <equality>
+    <connect anchor="0 0 0" body1="left-hand_right_follower" body2="left-hand_right_coupler" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+    <connect anchor="0 0 0" body1="left-hand_left_follower" body2="left-hand_left_coupler" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+    <joint joint1="left-hand_right_driver_joint" joint2="left-hand_left_driver_joint" polycoef="0 1 0 0 0" solimp="0.95 0.99 0.001"
+      solref="0.005 1"/>
+    <connect anchor="0 0 0" body1="right-hand_right_follower" body2="right-hand_right_coupler" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+    <connect anchor="0 0 0" body1="right-hand_left_follower" body2="right-hand_left_coupler" solimp="0.95 0.99 0.001" solref="0.005 1"/>
+    <joint joint1="right-hand_right_driver_joint" joint2="right-hand_left_driver_joint" polycoef="0 1 0 0 0" solimp="0.95 0.99 0.001"
+      solref="0.005 1"/>
+    <!-- <mocap>   -->
+    <weld body1="mocap_left" body2="left_link6" solref="0.01 1" solimp=".25 .25 0.001" />
+    <weld body1="mocap_right" body2="right_link6" solref="0.01 1" solimp=".25 .25 0.001" />
+  </equality>
+
+  <actuator>
+    <general class="2f85" name="left-hand_fingers_actuator" tendon="left-hand_split" forcerange="-2000000 2000000" ctrlrange="0 255"
+      gainprm="0.3137255 0 0" biasprm="0 -100 -10"/>
+    <general class="2f85" name="right-hand_fingers_actuator" tendon="right-hand_split" forcerange="-2000000 2000000" ctrlrange="0 255"
+      gainprm="0.3137255 0 0" biasprm="0 -100 -10"/>
+  </actuator>
+
+
+
+
+</mujoco>

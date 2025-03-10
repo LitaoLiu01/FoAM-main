@@ -1,0 +1,93 @@
+<mujocoinclude>
+<!--    <option timestep='0.0025' iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="elliptic"/>-->
+
+    <asset>
+		<texture builtin="flat" height="32" name="wall_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="frame_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="door_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="knob_geom" type="2d" width="32"/>
+		<texture builtin="gradient" height="128" rgb1="0.4 0.6 0.8" rgb2="0 0 0" type="skybox" width="128"/>
+		<texture builtin="gradient" height="512" name="texplane" rgb1="0.26 0.47 0.19" rgb2="0.08 0.34 0.17" type="2d" width="512"/>
+		<texture name="wood_texture" type="2d" file="image/texture_resized.png"/>
+		<texture name="cabinet_texture" type="2d" file="image/texture_cabinet.png"/>
+		<texture name="table_texture" type="2d" file="image/texture_table_4_resize.png"/>
+        <texture name="locker_texture" type="2d" file="image/texture_locker_5_resize.png"/>
+
+
+		<material name="Paint" shininess="0.15" specular="0.18" texture="wall_geom"/>
+		<material name="Wood" shininess="0.11" specular="0.07" texture="frame_geom"/>
+		<material name="Carpet" shininess="0.03" specular="0.03" texture="door_geom"/>
+		<material name="Metal" shininess="0.9" specular="0.89" texture="knob_geom"/>
+		<material name="Floor" texture="wood_texture" texrepeat="15 15"/>
+		<material name="cabinet_material" texture="cabinet_texture"/>
+		<material name="table_material" texture="table_texture" texrepeat="4 4"/>
+        <material name="locker_material" texture="locker_texture"/>
+
+		<!--locker meshes-->
+        <mesh name="locker" file="locker/locker.stl" scale="0.011 0.011 0.011"/>
+
+		<!--hammer meshes-->
+        <mesh name="hammer" file="hammer/hammer.stl" scale="0.6 0.6 0.6"/>
+        <mesh name="hammer_contact0" file="hammer/contact0.stl" scale="0.6 0.6 0.6"/>
+        <mesh name="hammer_contact1" file="hammer/contact1.stl" scale="0.6 0.6 0.6"/>
+
+		<!--camera meshes-->
+        <mesh name="camera" file="camera/camera.stl" scale="0.6 0.6 0.6"/>
+        <mesh name="camera_contact0" file="camera/contact0.stl" scale="0.6 0.6 0.6"/>
+        <mesh name="camera_contact1" file="camera/contact1.stl" scale="0.6 0.6 0.6"/>
+
+        <!--牙膏 meshes-->
+        <mesh name="toothpaste" file="toothpaste/toothpaste.stl" scale="0.6 0.6 0.6"/>
+        <mesh name="toothpaste_contact0" file="toothpaste/contact0.stl" scale="0.6 0.6 0.6"/>
+
+        <!--订书机-->
+        <mesh name="stapler" file="stapler/stapler.stl" scale="0.7 0.7 0.7"/>
+        <mesh name="stapler_contact0" file="stapler/contact0.stl" scale="0.7 0.7 0.7"/>
+        <mesh name="stapler_contact1" file="stapler/contact1.stl" scale="0.7 0.7 0.7"/>
+        <mesh name="stapler_contact2" file="stapler/contact2.stl" scale="0.7 0.7 0.7"/>
+        <mesh name="stapler_contact3" file="stapler/contact3.stl" scale="0.7 0.7 0.7"/>
+        <mesh name="stapler_contact4" file="stapler/contact4.stl" scale="0.7 0.7 0.7"/>
+
+    </asset>
+
+    <visual>
+        <map fogstart="1.5" fogend="5" force="0.1" znear="0.1"/>
+        <quality shadowsize="4096" offsamples="4"/>
+        <headlight ambient="0.4 0.4 0.4"/>
+    </visual>
+
+    <default>
+		<default class="wall">
+		</default>
+		<default class="frame">
+			<geom rgba="0.78 0.82 0.82 1.0" type="mesh"/>
+		</default>
+		<default class="door">
+			<geom rgba="0.55 0.35 0.01 1.0" type="mesh"/>
+		</default>
+		<default class="door_knob">
+			<geom condim="4" rgba="0.63 0.06 0.13 1.0" type="mesh"/>
+		</default>
+	</default>
+
+    <worldbody>
+        <!-- light -->
+        <body name="table" pos="0 0 0">
+            <geom material="table_material" type="box" size="0.5 1.0 0.06" pos="0.5 0 0.06"/>
+        </body>
+        <body name="midair" pos="0 .6 0.2">
+            <site pos="0 0 0" size="0.01" type="sphere" name="midair" rgba="1 0 0 0"/>
+        </body>
+
+		<geom material="Floor" name="floor" pos="0 0 0.00" size="15.0 15.0 0.05" type="plane"/>
+
+
+
+        <camera name="top" pos="0.4 0 1.5" fovy="78" mode="fixed" euler="0.0 0 -1.57 "/>
+        <camera name="angle" pos="0.2 -1.2 1" resolution="640 480" fovy="78" mode="fixed" euler="0.785 0 0 "/>
+		<camera name="head" fovy="78" mode="fixed" euler="0.0 -0.4 -1.57" pos="0.3 0.2 0.8"/>
+		<camera name="front" pos="0.9 0 0.9" resolution="640 480" fovy="78" mode="fixed" euler="0 0.785 1.57"/>
+        <camera name="angle_left" pos="0.2 1.2 1" resolution="640 480" fovy="78" mode="fixed" euler="-0.785 0 3.14 "/>
+
+    </worldbody>
+</mujocoinclude>

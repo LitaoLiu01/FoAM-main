@@ -1,0 +1,57 @@
+Wed Nov 15 15:36:22 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 15. The simulation is unstable. Time = 0.0380.
+
+Wed Nov 15 15:36:54 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 16. The simulation is unstable. Time = 0.0360.
+
+Thu Nov 16 17:00:14 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 1. The simulation is unstable. Time = 0.1040.
+
+Thu Nov 16 17:00:33 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 1. The simulation is unstable. Time = 0.1040.
+
+Thu Nov 16 17:01:12 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 1. The simulation is unstable. Time = 0.1040.
+
+Thu Nov 16 17:01:36 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 16. The simulation is unstable. Time = 0.0660.
+
+Thu Nov 16 17:05:29 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 19. The simulation is unstable. Time = 0.0240.
+
+Thu Nov 16 17:05:48 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 19. The simulation is unstable. Time = 0.0240.
+
+Thu Nov 16 17:07:30 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 1. The simulation is unstable. Time = 0.0900.
+
+Thu Nov 16 17:08:18 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 1. The simulation is unstable. Time = 0.2340.
+
+Thu Nov 16 17:09:01 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 0. The simulation is unstable. Time = 26.2080.
+
+Thu Nov 16 17:09:34 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 19. The simulation is unstable. Time = 0.0240.
+
+Thu Nov 16 17:10:05 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 23. The simulation is unstable. Time = 0.0240.
+
+Thu Nov 16 17:21:05 2023
+WARNING: mju_openResource: unknown file 'bimanual_viperx_transfer_cube.xml'
+
+Sat Apr 20 23:44:14 2024
+WARNING: mju_openResource: unknown file 'ee_sim_env.xml'
+
+Sat Apr 20 23:44:35 2024
+WARNING: mju_openResource: unknown file 'ee_sim_env.xml'
+
+Sat Apr 20 23:45:07 2024
+WARNING: mju_openResource: unknown file 'ee_sim_env.xml'
+
+Sat Apr 20 23:46:15 2024
+WARNING: mju_openResource: unknown file 'ee_sim_env.xml'
+
+Wed Apr 24 22:30:21 2024
+WARNING: mju_openResource: unknown file 'ee_sim_env.xml'
+

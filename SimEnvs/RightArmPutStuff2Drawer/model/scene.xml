@@ -1,0 +1,143 @@
+<mujocoinclude>
+<!--    <option timestep='0.0025' iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="elliptic"/>-->
+
+    <asset>
+		<texture builtin="flat" height="32" name="wall_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="frame_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="door_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="knob_geom" type="2d" width="32"/>
+		<texture builtin="gradient" height="128" rgb1="0.4 0.6 0.8" rgb2="0 0 0" type="skybox" width="128"/>
+		<texture builtin="gradient" height="512" name="texplane" rgb1="0.26 0.47 0.19" rgb2="0.08 0.34 0.17" type="2d" width="512"/>
+		<texture name="wood_texture" type="2d" file="image/texture_resized.png"/>
+		<texture name="cabinet_texture" type="2d" file="image/texture_cabinet.png"/>
+		<texture name="table_texture" type="2d" file="image/texture_table_resize.png"/>
+
+		<material name="Paint" shininess="0.15" specular="0.18" texture="wall_geom"/>
+		<material name="Wood" shininess="0.11" specular="0.07" texture="frame_geom"/>
+		<material name="Carpet" shininess="0.03" specular="0.03" texture="door_geom"/>
+		<material name="Metal" shininess="0.9" specular="0.89" texture="knob_geom"/>
+<!--		<material name="Floor" texture="texplane"/>-->
+		<material name="Floor" texture="wood_texture" texrepeat="15 15"/>
+		<material name="cabinet_material" texture="cabinet_texture"/>
+		<material name="table_material" texture="table_texture"/>
+
+
+		<mesh name="original-62.obj.convex" file="original-62.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-54.obj.convex" file="original-54.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-58.obj.convex" file="original-58.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-53.obj.convex" file="original-53.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-59.obj.convex" file="original-59.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-57.obj.convex" file="original-57.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-56.obj.convex" file="original-56.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-63.obj.convex" file="original-63.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-49.obj.convex" file="original-49.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-41.obj.convex" file="original-41.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-45.obj.convex" file="original-45.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-40.obj.convex" file="original-40.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-46.obj.convex" file="original-46.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-43.obj.convex" file="original-43.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-44.obj.convex" file="original-44.obj.convex.stl" scale="0.4 0.4 0.4"/>
+<!--		change the z scale in 50 37 63-->
+		<mesh name="original-50.obj.convex" file="original-50.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-28.obj.convex" file="original-28.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-36.obj.convex" file="original-36.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-32.obj.convex" file="original-32.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-27.obj.convex" file="original-27.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-33.obj.convex" file="original-33.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-31.obj.convex" file="original-31.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-30.obj.convex" file="original-30.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-37.obj.convex" file="original-37.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-3.obj.convex" file="original-3.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-7.obj.convex" file="original-7.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-4.obj.convex" file="original-4.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-8.obj.convex" file="original-8.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-24.obj.convex" file="original-24.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-17.obj.convex" file="original-17.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-6.obj.convex" file="original-6.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-22.obj.convex" file="original-22.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-21.obj.convex" file="original-21.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-23.obj.convex" file="original-23.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-20.obj.convex" file="original-20.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-15.obj.convex" file="original-15.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-14.obj.convex" file="original-14.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-10.obj.convex" file="original-10.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-11.obj.convex" file="original-11.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-5.obj.convex" file="original-5.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-2.obj.convex" file="original-2.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-64.obj.convex" file="original-64.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-60.obj.convex" file="original-60.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-47.obj.convex" file="original-47.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-34.obj.convex" file="original-34.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-12.obj.convex" file="original-12.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-18.obj.convex" file="original-18.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-16.obj.convex" file="original-16.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<mesh name="original-19.obj.convex" file="original-19.obj.convex.stl" scale="0.4 0.4 0.4"/>
+		<!--apple meshes-->
+        <mesh name="apple" file="apple/apple.stl" scale="0.6 0.6 0.6" />
+        <mesh name="apple_contact0" file="apple/contact0.stl" scale="0.6 0.6 0.6"/>
+        <mesh name="apple_contact1" file="apple/contact1.stl" scale="0.6 0.6 0.6"/>
+		<!--banana meshes-->
+        <mesh name="banana" file="banana/banana.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="banana_contact0" file="banana/contact0.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="banana_contact1" file="banana/contact1.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="banana_contact2" file="banana/contact2.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="banana_contact3" file="banana/contact3.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="banana_contact4" file="banana/contact4.stl" scale="0.5 0.5 0.5"/>
+		<!--cup meshes-->
+        <mesh name="cup" file="cup/cup.stl" scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact0" file="cup/contact0.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact1" file="cup/contact1.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact2" file="cup/contact2.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact3" file="cup/contact3.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact4" file="cup/contact4.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact5" file="cup/contact5.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact6" file="cup/contact6.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact7" file="cup/contact7.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact8" file="cup/contact8.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact9" file="cup/contact9.stl"   scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact10" file="cup/contact10.stl" scale="0.7 0.7 0.7"/>
+        <mesh name="cup_contact11" file="cup/contact11.stl" scale="0.7 0.7 0.7"/>
+		<!--waterbottle meshes-->
+        <mesh name="waterbottle" file="waterbottle/waterbottle.stl" scale="0.8 0.8 0.8"/>
+        <mesh name="waterbottle_contact0" file="waterbottle/contact0.stl" scale="0.8 0.8 0.8"/>
+        <mesh name="waterbottle_contact1" file="waterbottle/contact1.stl" scale="0.8 0.8 0.8"/>
+
+
+    </asset>
+
+    <visual>
+        <map fogstart="1.5" fogend="5" force="0.1" znear="0.1"/>
+        <quality shadowsize="4096" offsamples="4"/>
+        <headlight ambient="0.4 0.4 0.4"/>
+    </visual>
+
+    <default>
+		<default class="wall">
+		</default>
+		<default class="frame">
+			<geom rgba="0.78 0.82 0.82 1.0" type="mesh"/>
+		</default>
+		<default class="door">
+			<geom rgba="0.55 0.35 0.01 1.0" type="mesh"/>
+		</default>
+		<default class="door_knob">
+			<geom condim="4" rgba="0.63 0.06 0.13 1.0" type="mesh"/>
+		</default>
+	</default>
+
+    <worldbody>
+        <!-- light -->
+        <body name="table" pos="0 0 0">
+            <geom material="table_material" type="box" size="0.25 0.3 0.06" pos="0.5 -0.3 0"/>
+        </body>
+        <body name="midair" pos="0 .6 0.2">
+            <site pos="0 0 0" size="0.01" type="sphere" name="midair" rgba="1 0 0 0"/>
+        </body>
+		<geom material="Floor" name="floor" pos="0 0 0.00" size="15.0 15.0 0.05" type="plane"/>
+        <camera name="top" pos="0.4 0 1.5" fovy="78" mode="fixed" euler="0.0 0 -1.57 "/>
+        <camera name="angle" pos="0.2 -1.2 1" resolution="640 480" fovy="78" mode="fixed" euler="0.785 0 0 "/>
+		<camera name="head" fovy="78" mode="fixed" euler="0.0 -0.4 -1.57" pos="0.3 -0 1.05"/>
+		<camera name="front" pos="0.9 0 0.9" resolution="640 480" fovy="78" mode="fixed" euler="0 0.785 1.57"/>
+
+    </worldbody>
+</mujocoinclude>

@@ -1,0 +1,149 @@
+<mujocoinclude>
+<!--    <option timestep='0.0025' iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="elliptic"/>-->
+
+    <asset>
+		<texture builtin="flat" height="32" name="wall_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="frame_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="door_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="knob_geom" type="2d" width="32"/>
+		<texture builtin="gradient" height="128" rgb1="0.4 0.6 0.8" rgb2="0 0 0" type="skybox" width="128"/>
+		<texture builtin="gradient" height="512" name="texplane" rgb1="0.26 0.47 0.19" rgb2="0.08 0.34 0.17" type="2d" width="512"/>
+		<texture name="wood_texture" type="2d" file="image/texture_resized.png"/>
+		<texture name="cabinet_texture" type="2d" file="image/texture_cabinet.png"/>
+		<texture name="table_texture" type="2d" file="image/texture_table_3_resize.png"/>
+
+		<material name="Paint" shininess="0.15" specular="0.18" texture="wall_geom"/>
+		<material name="Wood" shininess="0.11" specular="0.07" texture="frame_geom"/>
+		<material name="Carpet" shininess="0.03" specular="0.03" texture="door_geom"/>
+		<material name="Metal" shininess="0.9" specular="0.89" texture="knob_geom"/>
+<!--		<material name="Floor" texture="texplane"/>-->
+		<material name="Floor" texture="wood_texture" texrepeat="15 15"/>
+		<material name="cabinet_material" texture="cabinet_texture"/>
+		<material name="table_material" texture="table_texture"/>
+
+		<!--pan meshes-->
+        <mesh name="pan" scale="0.7 0.7 0.7" file="fryingpan/fryingpan.stl"/>
+        <mesh name="pan_contact0"  scale="0.7 0.7 0.7" file="fryingpan/contact0.stl"/>
+        <mesh name="pan_contact1"  scale="0.7 0.7 0.7" file="fryingpan/contact1.stl"/>
+        <mesh name="pan_contact2"  scale="0.7 0.7 0.7" file="fryingpan/contact2.stl"/>
+        <mesh name="pan_contact3"  scale="0.7 0.7 0.7" file="fryingpan/contact3.stl"/>
+        <mesh name="pan_contact4"  scale="0.7 0.7 0.7" file="fryingpan/contact4.stl"/>
+        <mesh name="pan_contact5"  scale="0.7 0.7 0.7" file="fryingpan/contact5.stl"/>
+        <mesh name="pan_contact6"  scale="0.7 0.7 0.7" file="fryingpan/contact6.stl"/>
+        <mesh name="pan_contact7"  scale="0.7 0.7 0.7" file="fryingpan/contact7.stl"/>
+        <mesh name="pan_contact8"  scale="0.7 0.7 0.7" file="fryingpan/contact8.stl"/>
+        <mesh name="pan_contact9"  scale="0.7 0.7 0.7" file="fryingpan/contact9.stl"/>
+        <mesh name="pan_contact10" scale="0.7 0.7 0.7" file="fryingpan/contact10.stl"/>
+        <mesh name="pan_contact11" scale="0.7 0.7 0.7" file="fryingpan/contact11.stl"/>
+        <mesh name="pan_contact12" scale="0.7 0.7 0.7" file="fryingpan/contact12.stl"/>
+        <mesh name="pan_contact13" scale="0.7 0.7 0.7" file="fryingpan/contact13.stl"/>
+        <mesh name="pan_contact14" scale="0.7 0.7 0.7" file="fryingpan/contact14.stl"/>
+        <mesh name="pan_contact15" scale="0.7 0.7 0.7" file="fryingpan/contact15.stl"/>
+        <mesh name="pan_contact16" scale="0.7 0.7 0.7" file="fryingpan/contact16.stl"/>
+        <mesh name="pan_contact17" scale="0.7 0.7 0.7" file="fryingpan/contact17.stl"/>
+        <mesh name="pan_contact18" scale="0.7 0.7 0.7" file="fryingpan/contact18.stl"/>
+        <mesh name="pan_contact19" scale="0.7 0.7 0.7" file="fryingpan/contact19.stl"/>
+        <mesh name="pan_contact20" scale="0.7 0.7 0.7" file="fryingpan/contact20.stl"/>
+        <mesh name="pan_contact21" scale="0.7 0.7 0.7" file="fryingpan/contact21.stl"/>
+        <mesh name="pan_contact22" scale="0.7 0.7 0.7" file="fryingpan/contact22.stl"/>
+
+		<!--duck meshes-->
+		<mesh name="duck" file="duck/duck.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="duck_contact0" file="duck/contact0.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="duck_contact1" file="duck/contact1.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="duck_contact2" file="duck/contact2.stl" scale="0.5 0.5 0.5"/>
+		<!--apple meshes-->
+        <mesh name="apple" file="apple/apple.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="apple_contact0" file="apple/contact0.stl" scale="0.5 0.5 0.5"/>
+        <mesh name="apple_contact1" file="apple/contact1.stl" scale="0.5 0.5 0.5"/>
+		<!--pig meshes-->
+        <mesh name="piggybank" file="piggybank/piggybank.stl"   scale="0.3 0.3 0.3"/>
+        <mesh name="pig_contact0" file="piggybank/contact0.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="pig_contact1" file="piggybank/contact1.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="pig_contact2" file="piggybank/contact2.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="pig_contact3" file="piggybank/contact3.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="pig_contact4" file="piggybank/contact4.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="pig_contact5" file="piggybank/contact5.stl" scale="0.3 0.3 0.3"/>
+        <!--teapot meshes-->
+        <mesh name="teapot" file="teapot/teapot.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact0" file="teapot/contact0.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact1" file="teapot/contact1.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact2" file="teapot/contact2.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact3" file="teapot/contact3.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact4" file="teapot/contact4.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact5" file="teapot/contact5.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact6" file="teapot/contact6.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact7" file="teapot/contact7.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact8" file="teapot/contact8.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact9" file="teapot/contact9.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact10" file="teapot/contact10.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact11" file="teapot/contact11.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact12" file="teapot/contact12.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact13" file="teapot/contact13.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact14" file="teapot/contact14.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact15" file="teapot/contact15.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact16" file="teapot/contact16.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact17" file="teapot/contact17.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact18" file="teapot/contact18.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact19" file="teapot/contact19.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact20" file="teapot/contact20.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact21" file="teapot/contact21.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact22" file="teapot/contact22.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact23" file="teapot/contact23.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact24" file="teapot/contact24.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact25" file="teapot/contact25.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact26" file="teapot/contact26.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact27" file="teapot/contact27.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact28" file="teapot/contact28.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact29" file="teapot/contact29.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact30" file="teapot/contact30.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact31" file="teapot/contact31.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact32" file="teapot/contact32.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact33" file="teapot/contact33.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact34" file="teapot/contact34.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact35" file="teapot/contact35.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact36" file="teapot/contact36.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact37" file="teapot/contact37.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact38" file="teapot/contact38.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact39" file="teapot/contact39.stl" scale="0.3 0.3 0.3"/>
+        <mesh name="teapot_contact40" file="teapot/contact40.stl" scale="0.3 0.3 0.3"/>
+
+
+    </asset>
+
+    <visual>
+        <map fogstart="1.5" fogend="5" force="0.1" znear="0.1"/>
+        <quality shadowsize="4096" offsamples="4"/>
+        <headlight ambient="0.4 0.4 0.4"/>
+    </visual>
+
+    <default>
+		<default class="wall">
+		</default>
+		<default class="frame">
+			<geom rgba="0.78 0.82 0.82 1.0" type="mesh"/>
+		</default>
+		<default class="door">
+			<geom rgba="0.55 0.35 0.01 1.0" type="mesh"/>
+		</default>
+		<default class="door_knob">
+			<geom condim="4" rgba="0.63 0.06 0.13 1.0" type="mesh"/>
+		</default>
+	</default>
+
+    <worldbody>
+        <!-- light -->
+        <body name="table" pos="0 0 0">
+            <geom material="table_material" type="box" size="0.25 0.5 0.06" pos="0.5 0 0"/>
+        </body>
+        <body name="midair" pos="0 .6 0.2">
+            <site pos="0 0 0" size="0.01" type="sphere" name="midair" rgba="1 0 0 0"/>
+        </body>
+		<geom material="Floor" name="floor" pos="0 0 0.00" size="15.0 15.0 0.05" type="plane"/>
+        <camera name="top" pos="0.4 0 1.5" fovy="78" mode="fixed" euler="0.0 0 -1.57 "/>
+        <camera name="angle" pos="0.2 -1.2 1" resolution="640 480" fovy="78" mode="fixed" euler="0.785 0 0 "/>
+		<camera name="head" fovy="78" mode="fixed" euler="0.0 -0.4 -1.57" pos="0.3 -0 1.05"/>
+		<camera name="front" pos="0.9 0 0.9" resolution="640 480" fovy="78" mode="fixed" euler="0 0.785 1.57"/>
+
+    </worldbody>
+</mujocoinclude>
