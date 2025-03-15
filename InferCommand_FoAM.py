@@ -133,7 +133,7 @@ def main():
                   f'--ambiguity_env_name SimOpenDrawer ' \
                   f'--dataset_dir /data/litao.liu/CASIA_Intern/data_OpenDrawer_0525/data_SimOpenDrawer_ALL ' \
                   f'--ckpt_dir {args.ckpt_dir} ' \
-                  f'--policy_class DREAM ' \
+                  f'--policy_class FoAM ' \
                   f'--kl_weight 10 ' \
                   f'--chunk_size 450 ' \
                   f'--hidden_dim 512 ' \

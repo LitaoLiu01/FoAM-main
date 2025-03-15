@@ -2,14 +2,14 @@ import torch.nn as nn
 from torch.nn import functional as F
 import torchvision.transforms as transforms
 import torch
-from detr.main import build_MT_ACT_model_and_optimizer, build_DREAM_model_and_optimizer, build_G_img_ACT_model_and_optimizer, build_baku_model_and_optimizer, build_DREAM_wo_MPH_model_and_optimizer, build_rt1_model_and_optimizer
+from detr.main import build_MT_ACT_model_and_optimizer, build_FoAM_model_and_optimizer, build_G_img_ACT_model_and_optimizer, build_baku_model_and_optimizer, build_FoAM_wo_MPH_model_and_optimizer, build_rt1_model_and_optimizer
 import IPython
 e = IPython.embed
 
-class DREAM(nn.Module):
+class FoAM(nn.Module):
     def __init__(self, args_override):
         super().__init__()
-        model, optimizer = build_DREAM_model_and_optimizer(args_override)
+        model, optimizer = build_FoAM_model_and_optimizer(args_override)
         self.model = model # CVAE decoder
         self.optimizer = optimizer
         self.kl_weight = args_override['kl_weight']
@@ -51,10 +51,10 @@ class DREAM(nn.Module):
     def configure_optimizers(self):
         return self.optimizer
 
-class DREAM_wo_MPH(nn.Module):
+class FoAM_wo_MPH(nn.Module):
     def __init__(self, args_override):
         super().__init__()
-        model, optimizer = build_DREAM_wo_MPH_model_and_optimizer(args_override)
+        model, optimizer = build_FoAM_wo_MPH_model_and_optimizer(args_override)
         self.model = model # CVAE decoder
         self.optimizer = optimizer
         self.kl_weight = args_override['kl_weight']
@@ -206,25 +206,7 @@ class RT1(nn.Module):
         self.optimizer = optimizer
 
     def __call__(self, qpos, image, actions=None, is_pad=None, task_emb=None):
-        env_state = None
-        # normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-        #                                  std=[0.229, 0.224, 0.225])
-        # image = normalize(image)
-        if actions is not None: # training time
-            # actions = actions[:, :self.model.num_queries]
-            # is_pad = is_pad[:, :self.model.num_queries]
-            if task_emb is not None:
-                _, actor_loss = self.model(qpos, image, is_pad, actions, task_emb)
-            else:
-                pass
-            actor_loss['loss'] = actor_loss['actor_loss']
-            return actor_loss
-        else: # inference time
-            if task_emb is not None:
-                a_hat = self.model(qpos, image, is_pad, actions, task_emb) # no action, sample from prior
-            else:
-                pass
-            return a_hat
+        pass
 
     def configure_optimizers(self):
         return self.optimizer

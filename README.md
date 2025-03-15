@@ -63,7 +63,7 @@ Run the `imitate_episodes.py` file.
 --ambiguity_env_name SimOpenDrawer 
 --dataset_dir /home/liulitao/Desktop/FoAM-main/train_data 
 --ckpt_dir /home/liulitao/Desktop/FoAM-main/ckpt 
---policy_class DREAM 
+--policy_class FoAM 
 --kl_weight 10 
 --chunk_size 450 
 --hidden_dim 512 
@@ -86,7 +86,7 @@ Run the `imitate_episodes.py` file.
 --ambiguity_env_name SimOpenDrawer 
 --dataset_dir /home/liulitao/Desktop/FoAM-main/train_data 
 --ckpt_dir /home/liulitao/Desktop/FoAM-main/ckpt 
---policy_class DREAM 
+--policy_class FoAM 
 --kl_weight 10 
 --chunk_size 450 
 --hidden_dim 512 

@@ -4,7 +4,7 @@ from pathlib import Path
 import click
 import numpy as np
 import torch
-from .models import build_DREAM_model, build_MT_ACT_model, build_G_img_ACT_model, build_baku_model, build_DREAM_wo_MPH_model, build_rt1_model
+from .models import build_FoAM_model, build_MT_ACT_model, build_G_img_ACT_model, build_baku_model, build_DREAM_wo_MPH_model, build_rt1_model
 
 import IPython
 e = IPython.embed
@@ -98,14 +98,14 @@ def get_args_parser():
 
     return parser
 
-def build_DREAM_model_and_optimizer(args_override):
+def build_FoAM_model_and_optimizer(args_override):
     parser = argparse.ArgumentParser('DETR training and evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()
 
     for k, v in args_override.items():
         setattr(args, k, v)
 
-    model = build_DREAM_model(args)
+    model = build_FoAM_model(args)
     model.cuda()
 
     param_dicts = [
@@ -120,7 +120,7 @@ def build_DREAM_model_and_optimizer(args_override):
 
     return model, optimizer
 
-def build_DREAM_wo_MPH_model_and_optimizer(args_override):
+def build_FoAM_wo_MPH_model_and_optimizer(args_override):
     parser = argparse.ArgumentParser('DETR training and evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()
 

@@ -51,7 +51,7 @@ class LinearTo2D(nn.Module):
         x = self.linear(x)
         return x.view(x.size(0), x.size(1), self.out_shape[0], self.out_shape[1])
 
-class DREAM(nn.Module):
+class FoAM(nn.Module):
     """ This is the DETR module that performs object detection """
     def __init__(self, backbones, transformer, encoder, state_dim, num_queries, camera_names, image_embedding_dim, is_multi_task,
                  use_film: bool = False):
@@ -216,7 +216,7 @@ class DREAM(nn.Module):
 
         return a_hat, is_pad_hat, [mu, logvar], last_image_embedding_hat, goal_image_embedding
 
-class DREAM_Infer(nn.Module):
+class FoAM_Infer(nn.Module):
     """ This is the DETR module that performs object detection """
     def __init__(self, backbones, transformer, encoder, state_dim, num_queries, camera_names, is_multi_task,
                  use_film: bool = False):
@@ -362,7 +362,7 @@ class DREAM_Infer(nn.Module):
 
         return a_hat, is_pad_hat, [mu, logvar]
 
-class DREAM_wo_MPH(nn.Module):
+class FoAM_wo_MPH(nn.Module):
     """ This is the DETR module that performs object detection """
     def __init__(self, backbones, transformer, encoder, state_dim, num_queries, camera_names, is_multi_task,
                  use_film: bool = False):
@@ -1058,100 +1058,7 @@ class RT1(nn.Module):
 
     def forward(self, qpos, image, is_pad, actions=None, task_emb=None):
 
-        if actions is not None:
-            # 处理task_emb
-            lang_features = task_emb.float()[:, None].repeat(1, self.history_len, 1)
-            lang_features = self.language_projector(lang_features)
-            lang_features = rearrange(lang_features, "b t d -> (b t) d")
-
-            # 处理 image
-            # features
-            features = []
-            for key in self.pixel_keys:
-                shape = image.shape
-                pixel = rearrange(image, "b t c h w -> (b t) c h w")
-                pixel = self.customAug(pixel / 255.0) if self.norm else pixel
-                # encode
-                lang = lang_features if self.film else None
-                pixel = self.encoder(pixel, lang=lang, return_intermediate=True)
-                pixel = self.token_learner(pixel)
-                pixel = rearrange(pixel, "b d k -> b k d")
-                pixel = self.image_projector(pixel)
-                pixel = rearrange(pixel, "(b t) k d -> b t k d", t=shape[1])
-                features.append(pixel)
-
-            # 处理 qpos
-            proprio = qpos.float()
-            proprio = self.proprio_projector(proprio)
-            proprio = proprio[:, :, None]
-            features.append(proprio)
-            # concatenate
-            features = torch.cat(features, dim=-2).view(
-                actions.shape[0], -1, self.repr_dim
-            )  # (B, T * num_feat_per_step, D)
-
-            prompt_features = []
-            lang_features = rearrange(lang_features, "(b t) d -> b t d", t=shape[1])
-            prompt_features.append(lang_features[:, -1:])
-            num_prompt_feats = len(prompt_features) if len(prompt_features) > 0 else 0
-            if num_prompt_feats > 0:
-                prompt_features = torch.cat(prompt_features, dim=-2).view(
-                    actions.shape[0], -1, self.repr_dim
-                )
-                # prepend prompt features
-                features = torch.cat([prompt_features, features], dim=1)
-                stddev = 0.1
-
-                a_hat, actor_loss = self.actor(features, num_prompt_feats, stddev, actions)
-                return a_hat, actor_loss
-        else:
-            # 处理task_emb
-            key = self.pixel_keys[0]
-            repeat_len = (
-                min(len(self.observation_buffer[key]) + 1, self.eval_history_len)
-            )
-            lang_features = task_emb.float()[:, None].repeat(1, repeat_len, 1)
-            lang_features = self.language_projector(lang_features)
-            lang_features = rearrange(lang_features, "b t d -> (b t) d")
-
-            # 处理 image
-            # features
-            features = []
-            for key in self.pixel_keys:
-                self.observation_buffer[key].append(
-                    self.test_aug(image.squeeze(0).squeeze(0)).numpy()
-                )
-                pixels = torch.as_tensor(np.array(self.observation_buffer[key]), device=self.device).float()
-                lang = lang_features if self.film else None
-                pixels = self.encoder(pixels, lang=lang, return_intermediate=True)
-                pixels = self.token_learner(pixels)
-                pixels = rearrange(pixels, "b d k -> b k d")
-                pixels = self.image_projector(pixels)
-                features.append(pixels)
-
-            # 处理 qpos
-            # self.proprio_buffer.append(qpos)
-            qpos = qpos.squeeze(0)
-            self.proprio_buffer.append(qpos.cpu().numpy())
-            proprio = torch.as_tensor(np.array(self.proprio_buffer), device=self.device).float()
-            proprio = self.proprio_projector(proprio)
-            proprio = proprio[:, None]
-            features.append(proprio)
-            features = torch.cat(features, dim=-2).view(-1, self.repr_dim)
-
-            # prompt
-            prompt_features = []
-            prompt_features.append(lang_features[-1:])
-            num_prompt_feats = len(prompt_features)
-            if num_prompt_feats > 0:
-                prompt_features = torch.cat(prompt_features, dim=-1).view(-1, self.repr_dim)
-                features = torch.cat([prompt_features, features], dim=0)
-
-            stddev = 0.1
-            a_hat = self.actor(features.unsqueeze(0), num_prompt_feats, stddev)
-            a_hat = a_hat[0]
-
-            return a_hat
+        pass
 
     def buffer_reset(self):
         self.observation_buffer = {}
@@ -1421,7 +1328,7 @@ def build_encoder(args):
 
     return encoder
 
-def build_dream(args):
+def build_foam(args):
     state_dim = 14 # TODO hardcode
     image_embedding_dim = (300, 512)  # 预测图像嵌入维度为300*512
     backbones = []
@@ -1446,7 +1353,7 @@ def build_dream(args):
     transformer = build_transformer(args)
     encoder = build_encoder(args)
     if is_train:
-        model = DREAM(
+        model = FoAM(
             backbones,
             transformer,
             encoder,
@@ -1460,7 +1367,7 @@ def build_dream(args):
         n_parameters = sum(p.numel() for p in model.parameters() if p.requires_grad)
         print("number of parameters: %.2fM" % (n_parameters/1e6,))
     else:
-        model = DREAM_Infer(
+        model = FoAM_Infer(
             backbones,
             transformer,
             encoder,
@@ -1476,7 +1383,7 @@ def build_dream(args):
 
     return model
 
-def build_dream_wo_mph(args):
+def build_foam_wo_mph(args):
     state_dim = 14 # TODO hardcode
     backbones = []
     use_film = True
@@ -1498,7 +1405,7 @@ def build_dream_wo_mph(args):
         print(f'Building build_backbone for goal_img')
     transformer = build_transformer(args)
     encoder = build_encoder(args)
-    model = DREAM_wo_MPH(
+    model = FoAM_wo_MPH(
         backbones,
         transformer,
         encoder,

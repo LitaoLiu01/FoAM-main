@@ -6,8 +6,8 @@ import os
 
 class Args:
     def __init__(self):
-        self.ckpt_dir = f'/workspace/ckpt/DREAM_wo_MPH_SimALL_cs100_0820_last_goal_img_frozen_backbone/'
-        self.log_prefix = f'DREAM_wo_MPH_SimALL_cs100_0820_last_goal_img_frozen_backbone'
+        self.ckpt_dir = f'/workspace/ckpt/FoAM_wo_MPH_SimALL_cs100_0820_last_goal_img_frozen_backbone/'
+        self.log_prefix = f'FoAM_wo_MPH_SimALL_cs100_0820_last_goal_img_frozen_backbone'
         self.GPU = '4090'
         self.chunk_size = 100
         self.TASK_NAME = [
@@ -135,7 +135,7 @@ def main():
                   f'--ambiguity_env_name SimOpenDrawer ' \
                   f'--dataset_dir /data/litao.liu/CASIA_Intern/data_OpenDrawer_0525/data_SimOpenDrawer_ALL ' \
                   f'--ckpt_dir {args.ckpt_dir} ' \
-                  f'--policy_class DREAM_wo_MPH ' \
+                  f'--policy_class FoAM_wo_MPH ' \
                   f'--kl_weight 10 ' \
                   f'--chunk_size {args.chunk_size} ' \
                   f'--hidden_dim 512 ' \

@@ -1,6 +1,5 @@
 import pathlib
 import json
-# from InferCommand_DREAM import
 ### Task parameters
 XML_DIR = str(pathlib.Path(__file__).parent.resolve()) + '/SimEnvs/' # note: absolute path
 DT = 0.02

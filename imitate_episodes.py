@@ -17,7 +17,7 @@ from constants import CAMERA_NAMES, DT, GetTextEmbeddings
 from random_initialize_envs import initialize_envs
 from utils import test_sample # robot functions
 from utils import compute_dict_mean, set_seed, detach_dict, judge_function # helper functions
-from policy import MT_ACTPolicy, DREAM, G_img_ACT, BAKU, DREAM_wo_MPH, RT1
+from policy import MT_ACTPolicy, FoAM, G_img_ACT, BAKU, FoAM_wo_MPH, RT1
 # from detr.models.agent.baku import BCAgent as BAKU
 from visualize_episodes import save_videos
 from sim_env import BOX_POSE, ENV_POSE
@@ -72,7 +72,7 @@ def main(args):
     state_dim = 14
     lr_backbone = 1e-5
     backbone = 'resnet18'
-    if policy_class == 'DREAM_wo_MPH' or policy_class == 'MT-ACT' or policy_class == 'G_img_ACT' or policy_class == 'DREAM':
+    if policy_class == 'FoAM_wo_MPH' or policy_class == 'MT-ACT' or policy_class == 'G_img_ACT' or policy_class == 'FoAM':
         enc_layers = 4
         dec_layers = 7
         nheads = 8
@@ -167,10 +167,10 @@ def main(args):
     print(f'Best ckpt, val loss {min_val_loss:.6f} @ epoch{best_epoch}')
 
 def make_policy(policy_class, policy_config):
-    if policy_class == 'DREAM':
-        policy = DREAM(policy_config)
-    elif policy_class == 'DREAM_wo_MPH':
-        policy = DREAM_wo_MPH(policy_config)
+    if policy_class == 'FoAM':
+        policy = FoAM(policy_config)
+    elif policy_class == 'FoAM_wo_MPH':
+        policy = FoAM_wo_MPH(policy_config)
     elif policy_class == 'G_img_ACT':
         policy = G_img_ACT(policy_config)
     elif policy_class == 'MT-ACT':
@@ -184,9 +184,9 @@ def make_policy(policy_class, policy_config):
     return policy
 
 def make_optimizer(policy_class, policy):
-    if policy_class == 'DREAM':
+    if policy_class == 'FoAM':
         optimizer = policy.configure_optimizers()
-    elif policy_class == 'DREAM_wo_MPH':
+    elif policy_class == 'FoAM_wo_MPH':
         optimizer = policy.configure_optimizers()
     elif policy_class == 'G_img_ACT':
         optimizer = policy.configure_optimizers()
@@ -262,7 +262,7 @@ def eval_bc(config, ckpt_name, task_emb, save_episode=True):
         # 将原始字典更新为修改后的字典
         state_dict = updated_state_dict
 
-    if policy_class == 'DREAM':
+    if policy_class == 'FoAM':
         params_to_remove = [
             "model.image_embedding_head.linear.weight",
             "model.image_embedding_head.linear.bias"
@@ -372,7 +372,7 @@ def eval_bc(config, ckpt_name, task_emb, save_episode=True):
                     curr_image = get_image(ts, camera_names)
                 ### query policy
                 ### query policy
-                if config['policy_class'] == 'MT-ACT' or config['policy_class'] == 'G_img_ACT' or config['policy_class'] == 'DREAM_wo_MPH':
+                if config['policy_class'] == 'MT-ACT' or config['policy_class'] == 'G_img_ACT' or config['policy_class'] == 'FoAM_wo_MPH':
                     if t % query_frequency == 0:
                         all_actions = policy(qpos, curr_image, task_emb=task_emb)
                     if temporal_agg:
@@ -390,7 +390,7 @@ def eval_bc(config, ckpt_name, task_emb, save_episode=True):
                         raw_action = all_actions[:, t % query_frequency]
                     raw_action = raw_action.squeeze(0).cpu().numpy()
                     action = post_process(raw_action)
-                elif config['policy_class'] == 'DREAM':
+                elif config['policy_class'] == 'FoAM':
                     if t % query_frequency == 0:
                         all_actions = policy(qpos, curr_image, task_emb=task_emb)
                     if temporal_agg:

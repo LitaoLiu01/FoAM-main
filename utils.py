@@ -13,9 +13,9 @@ from pathlib import Path
 
 e = IPython.embed
 
-class EpisodicDatasetDream(torch.utils.data.Dataset):
+class EpisodicDatasetFoAM(torch.utils.data.Dataset):
     def __init__(self, episode_ids, dataset_dir, norm_stats, num_episodes, config):
-        super(EpisodicDatasetDream).__init__()
+        super(EpisodicDatasetFoAM).__init__()
         self.episode_ids = episode_ids
         self.dataset_dir = dataset_dir
         self.norm_stats = norm_stats
@@ -242,7 +242,7 @@ class EpisodicDatasetDream(torch.utils.data.Dataset):
 
         return image_data, qpos_data, action_data, is_pad, task_emb
 
-def get_norm_stats_dream(dataset_dir, num_episodes):
+def get_norm_stats_FoAM(dataset_dir, num_episodes):
     path = Path(dataset_dir)
     files = []
     subfolders = list_subfolders(path)
@@ -283,10 +283,13 @@ def get_norm_stats_dream(dataset_dir, num_episodes):
 
     all_qpos_data = torch.stack(all_qpos_data)
     all_action_data = torch.stack(all_action_data)
+    print(all_action_data.shape) # 50*450*14
 
     # normalize action data
     action_mean = all_action_data.mean(dim=[0, 1], keepdim=True)
+    print(action_mean.shape) # 1 1 14
     action_std = all_action_data.std(dim=[0, 1], keepdim=True)
+    print(action_mean.shape)
     action_std = torch.clip(action_std, 1e-2, 10)  # clipping
     action_max = all_action_data.view(-1, 14).max(dim=0, keepdim=True).values
     action_max = action_max.squeeze()
@@ -330,11 +333,11 @@ def load_data(dataset_dir, num_episodes, camera_names, batch_size_train, batch_s
     val_indices = shuffled_indices[int(train_ratio * num_episodes):]
 
     # obtain normalization stats for qpos and action
-    norm_stats = get_norm_stats_dream(dataset_dir, num_episodes)
+    norm_stats = get_norm_stats_FoAM(dataset_dir, num_episodes)
 
     # construct dataset and dataloader
-    train_dataset = EpisodicDatasetDream(train_indices, dataset_dir, norm_stats, num_episodes, config)
-    val_dataset = EpisodicDatasetDream(val_indices, dataset_dir, norm_stats, num_episodes, config)
+    train_dataset = EpisodicDatasetFoAM(train_indices, dataset_dir, norm_stats, num_episodes, config)
+    val_dataset = EpisodicDatasetFoAM(val_indices, dataset_dir, norm_stats, num_episodes, config)
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size_train, shuffle=True, pin_memory=True,
                                   num_workers=8, prefetch_factor=1)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size_val, shuffle=True, pin_memory=True, num_workers=8,
