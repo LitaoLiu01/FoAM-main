@@ -19,20 +19,10 @@ Shanghai AI Laboratory, ShanghaiTech, TeleAI -->
 ## Installation
 If you want to use FoAM, you need to install the required packages:
 ```bash
-conda create -n foam python=3.8.10
+conda env create -f environment.yaml
 conda activate foam
 ```
 
-Install torch.
-```bash
-conda install pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia
-```
-
-Install packages from `requirements.txt` file. 
-
-```bash
-pip install -r requirements.txt
-```
 ## Reproduce FoAM
 ### Prepare Datasets
 First, generate data based on any one or more scenarios in the [FoAM Benchmark](https://github.com/LitaoLiu01/FoAM-benchmark).
