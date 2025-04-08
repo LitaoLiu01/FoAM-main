@@ -21,6 +21,7 @@ If you want to use FoAM, you need to install the required packages:
 ```bash
 conda env create -f environment.yaml
 conda activate foam
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
 ## Reproduce FoAM
